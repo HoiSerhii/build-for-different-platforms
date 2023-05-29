@@ -12,5 +12,8 @@ build: 	## Build simple app
 image: build
 	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
 
+clean:
+	docker rmi ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+
 help: ## This help screen
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

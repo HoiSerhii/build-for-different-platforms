@@ -10,7 +10,7 @@ get:
 	go get
 
 build: get	## Build simple app
-	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o httpserver -ldflags="-X 'github.com/HoiSerhii/build-for-different-platforms/main.appVersion=${VERSION}'"
+	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o httpserver -ldflags="-X 'main.appVersion=${VERSION}'"
 
 image: build
 	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}

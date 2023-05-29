@@ -23,7 +23,7 @@ func main() {
 	http.HandleFunc("/", getRoot)
 	http.HandleFunc("/hello", getHello)
 
-	log.Println("Starting HTTP server")
+	log.Println("Starting HTTP server, version", appVersion)
 	err := http.ListenAndServe(":3333", nil)
 	if err != nil {
 		log.Fatal(err)

@@ -12,7 +12,7 @@ get:
 build: get	## Build simple app
 	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o httpserver -ldflags="-X 'main.appVersion=${VERSION}'"
 
-image: build
+image:
 	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
 
 clean:

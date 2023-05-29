@@ -12,7 +12,7 @@ format:
 get:
 	go get
 
-build: 	## Build simple app
+build: format get	## Build simple app
 	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o httpserver -ldflags="-X 'github.com/HoiSerhii/build-for-different-platforms/main.appVersion=${VERSION}'"
 
 image: build

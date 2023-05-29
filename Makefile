@@ -6,13 +6,10 @@ VERSION ?= $(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short
 TARGETOS ?= linux
 TARGETARCH ?= amd64
 
-format:
-	gofmt -s -w ./
-
 get:
 	go get
 
-build: format get	## Build simple app
+build: get	## Build simple app
 	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o httpserver -ldflags="-X 'github.com/HoiSerhii/build-for-different-platforms/main.appVersion=${VERSION}'"
 
 image: build
